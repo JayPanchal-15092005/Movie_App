@@ -44,6 +44,13 @@
       "eas": {
         "projectId": "b3ec7609-7e11-4da1-baac-190e22e5dbeb"
       }
-    }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/b3ec7609-7e11-4da1-baac-190e22e5dbeb"
+    },
+    "owner": "jay_panchal"
   }
 }
