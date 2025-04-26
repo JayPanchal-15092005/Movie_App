@@ -1,4 +1,4 @@
-  <h3 align="center">A Movie Finding App with Extensive Search</h3>
+  <h3 align="center">A Movie And Tv Shows Finding App with Extensive Search</h3>
 
 ## <a name="introduction"> Introduction</a>
 
