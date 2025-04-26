@@ -24,7 +24,7 @@ Built with Expo, TypeScript, and Tailwind CSS, this app fetches movies and creat
 
 👉 **Home Page**: Featured and discover movies
 
-👉 **Search Page**: Search for your favorite movies
+👉 **Search Page**: Search for your favorite movies and Tv Shows
 
 👉 **Popularity algorithm**: Track user searches to display the most popular movies
 
