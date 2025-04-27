@@ -28,39 +28,22 @@ export const fetchMovies = async({query}: {query: string}) => {
 
 export const fetchMoviesDetails = async (movieId: string): Promise<MovieDetails> => {
     try {
-        const response = await fetch(
-            `${TMDB_CONFIG.BASE_URL}/movie/${movieId}?api_key=${TMDB_CONFIG.API_KEY}`,
-            {
-                method: "GET",
-                headers: TMDB_CONFIG.headers
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch MovieDetails: ${response.statusText}`)
+      const response = await fetch(
+        `${TMDB_CONFIG.BASE_URL}/movie/${movieId}?append_to_response=videos`,
+        {
+          method: "GET",
+          headers: TMDB_CONFIG.headers,
         }
-
-        const data = await response.json();
-
-        return data;
+      );
+  
+      if (!response.ok) {
+        throw new Error(`Failed to fetch MovieDetails: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      return data;
     } catch (error) {
-        console.log("Error in the api FILE (fetchMoviesDetails METHOD)", error);
-        throw error;
-
+      console.log("Error in the api FILE (fetchMoviesDetails METHOD)", error);
+      throw error;
     }
-}
-
-
-// const url = 'https://api.themoviedb.org/3/keyword/keyword_id/movies?include_adult=true&language=en-US&page=1';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     accept: 'application/json',
-//     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjJmYzE2ZTM0ZDMxM2YxMjNiYzc3OThiNmQ2MTkwYiIsIm5iZiI6MTc0NTU1NDE4NC43MzMsInN1YiI6IjY4MGIwYjA4YmZiZGYxZjhjNTg5Yzg4MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PAmPF5gqKpKoboDotjVatGsBOiQvAzwOG3hXCugWbX8'
-//   }
-// };
-
-// fetch(url, options)
-//   .then(res => res.json())
-//   .then(json => console.log(json))
-//   .catch(err => console.error(err));
+  };

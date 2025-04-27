@@ -66,7 +66,15 @@ interface MovieDetails {
   status: string;
   tagline: string | null;
   title: string;
-  video: boolean;
+  videos: {
+    results: {
+      id: string;
+      key: string;
+      name: string;
+      site: string;
+      type: string;
+    }[];
+  };
   vote_average: number;
   vote_count: number;
 }

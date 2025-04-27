@@ -15,6 +15,10 @@ export default function RootLayout() {
     name="movie/[id]"
     options={{headerShown: false}}
     />
+    <Stack.Screen
+    name="movie/trailer"
+    options={{ headerShown: false }}
+    />
   </Stack>
   </>
   )

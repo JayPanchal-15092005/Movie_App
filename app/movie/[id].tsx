@@ -1,14 +1,21 @@
-import { View, Text, Image, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
-import React from 'react';
-import { icons } from '@/constants/icons';
-import useFetch from '@/services/useFetch';
-import { fetchMoviesDetails } from '@/services/api';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
+import React from "react";
+import { icons } from "@/constants/icons";
+import useFetch from "@/services/useFetch";
+import { fetchMoviesDetails } from "@/services/api";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface MovieInfoProps {
   label: string;
-  value?: string | number | null; 
+  value?: string | number | null;
 }
 
 const MovieInfo = ({ label, value }: MovieInfoProps) => (
@@ -21,18 +28,19 @@ const MovieInfo = ({ label, value }: MovieInfoProps) => (
 );
 
 const Details = () => {
-
   const router = useRouter();
   const { id } = useLocalSearchParams();
 
-  const { data: movie, loading} = useFetch(() => fetchMoviesDetails(id as string));
+  const { data: movie, loading } = useFetch(() =>
+    fetchMoviesDetails(id as string)
+  );
 
   if (loading) {
     return (
-      <SafeAreaView className='bg-primary flex-1'>
+      <SafeAreaView className="bg-primary flex-1">
         <ActivityIndicator />
       </SafeAreaView>
-    )
+    );
   }
 
   return (
@@ -47,7 +55,20 @@ const Details = () => {
             resizeMode="stretch"
           />
 
-          <TouchableOpacity className="absolute bottom-5 right-5 rounded-full size-14 bg-white flex items-center justify-center">
+          <TouchableOpacity
+            className="absolute bottom-5 right-5 rounded-full size-14 bg-white flex items-center justify-center"
+            onPress={() => {
+              const trailer = movie?.videos?.results?.find(
+                (vid: any) => vid.type === 'Trailer' && vid.site === 'YouTube'
+              );
+
+              if (trailer) {
+                router.push(`/movie/trailer?videoKey=${trailer.key}`);
+              } else {
+                alert("Trailer is not available");
+              }
+            }}
+          >
             <Image
               source={icons.play}
               className="w-6 h-7 ml-1"
@@ -60,7 +81,7 @@ const Details = () => {
           <Text className="text-white font-bold text-xl">{movie?.title}</Text>
           <View className="flex-row items-center gap-x-1 mt-2">
             <Text className="text-light-200 text-sm">
-              {movie?.release_date?.split('-')[0]} •
+              {movie?.release_date?.split("-")[0]} •
             </Text>
             <Text className="text-light-200 text-sm">{movie?.runtime}m</Text>
           </View>
@@ -82,6 +103,10 @@ const Details = () => {
             label="Genres"
             value={movie?.genres?.map((g) => g.name).join(" • ") || "N/A"}
           />
+
+          {/* <View className='flex-row items-center bg-dark-100 px-2 py-1 rounded-md gap-x-1 mt-2'>
+            <Text className='"text-white font-bold text-sm'>{movie?.video}</Text>
+          </View> */}
 
           <View className="flex flex-row justify-between w-1/2">
             <MovieInfo
@@ -119,6 +144,6 @@ const Details = () => {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 export default Details;
