@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 16.4.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "preview"
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_MOVIE_API_KEY" : "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjJmYzE2ZTM0ZDMxM2YxMjNiYzc3OThiNmQ2MTkwYiIsIm5iZiI6MTc0NTU1NDE4NC43MzMsInN1YiI6IjY4MGIwYjA4YmZiZGYxZjhjNTg5Yzg4MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PAmPF5gqKpKoboDotjVatGsBOiQvAzwOG3hXCugWbX8",
+
+        "EXPO_PUBLIC_APPWRITE_PROJECT_ID" : "680a02860015824333e5",
+        "EXPO_PUBLIC_APPWRITE_DATABASE_ID" : "680b515d003b0366cb04",
+        "EXPO_PUBLIC_APPWRITE_COLLECTION_ID" : "680b51ac0010f33fe388"
+      },
+      "autoIncrement": true,
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

@@ -12,10 +12,13 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": ["INTERNET"],
+      "runtimeVersion": "1.0.0",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jay_panchal.MovieInfo"
     },
     "web": {
       "bundler": "metro",
