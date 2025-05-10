@@ -1,5 +1,5 @@
 import { View, Text, Image, FlatList, ActivityIndicator } from 'react-native'
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { images } from '@/constants/images';
 import { icons } from '@/constants/icons';
 import MovieDisplayCard from '@/components/MovieCard';
